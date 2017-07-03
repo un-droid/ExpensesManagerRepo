@@ -1,0 +1,65 @@
+<ion-view view-title="Add an expense">
+  <ion-content>
+    <form novalidate name="expensesForm">
+      <div class="list">
+        <label class="item item-input item-select">
+          <div class="input-label">Category</div>
+          <select name="expenseCategory" 
+                  ng-model="newExpenseObject.category"
+                  required>
+            <option ng-repeat="expense in expenseCategory">{{expense}}</option>
+          </select>
+        </label>
+        <label class="item item-input item-select">
+          <div class="input-label">Paying method</div>
+          <select name="expensePayingMethod"
+                  ng-model="newExpenseObject.payingMethod"
+                  required>
+            <option ng-repeat="method in expensePayingMethod">{{method.value}}</option>
+          </select>
+        </label>
+        <label class="item">Currency
+        <div id="currencyContainer">
+                    <ion-radio ng-repeat="currency in expenseCurrency"
+                      value="{{currency.value}}" 
+                      required
+                      name="newExpenseObject.currency"
+                      ng-model="newExpenseObject.currency">
+                      {{currency.value}}
+          </ion-radio>
+        </div>
+        </label>
+        <label class="item item-input item-stacked-label" ng-show="newExpenseObject.currency=='...'">
+          <span class="input-label">Other currency/country?</span>
+          <input type="text"
+                 name="otherCurrency" 
+                 placeholder="?" 
+                 ng-model="newExpenseObject.otherCurrency"
+                 ng-required="newExpenseObject.currency=='...'">
+        </label>
+
+        <label class="item item-input item-stacked-label" ng-hide="newExpenseObject.currency=='...'">
+          <span class="input-label">Damage</span>
+          <input type="number"
+                 name="expenseDamage" 
+                 placeholder="$$$" 
+                 ng-model="newExpenseObject.price"
+                 ng-required="!newExpenseObject.currency=='...'">
+        </label>
+
+        <label class="item item-input item-stacked-label">
+          <span class="input-label">Short description</span>
+          <input type="text"
+                 name="expenseDescription" 
+                 placeholder="What did you buy?!" 
+                 ng-model="newExpenseObject.description"
+                 required>
+        </label>
+        <ion-checkbox ng-model="newExpenseObject.necessary">Was that necessary?</ion-checkbox>
+      </div>
+    </form>
+    <div class="submitContainer">
+      <button class="button button-royal" ng-click="addExpense()" ng-disabled="!expensesForm.$valid">Add expense</button>
+    </div>
+  </ion-content>
+</ion-view>

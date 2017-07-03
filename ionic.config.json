@@ -1,0 +1,13 @@
+{
+  "name": "ionSavings",
+  "app_id": "f825353c",
+  "gulpStartupTasks": [
+    "sass",
+    "watch"
+  ],
+  "watchPatterns": [
+    "www/**/*",
+    "!www/lib/**/*",
+    "!www/**/*.map"
+  ]
+}

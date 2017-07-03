@@ -1,0 +1,66 @@
+<ion-view view-title="{{signTitle}}">
+  <ion-content>
+<!--sign up form-->
+    
+    <form novalidate name="signUpForm" ng-show="showSignUp">
+      <div class="list">
+        <label class="item item-input item-stacked-label">
+          <span class="input-label">Email</span>
+          <input type="email"
+                 name="email" 
+                 placeholder="Register using your email" 
+                 ng-model="signUpObject.email"
+                 required>
+        </label>
+
+        <label class="item item-input item-stacked-label">
+          <span class="input-label">Password</span>
+          <input type="password"
+                 name="password" 
+                 placeholder="Think of a good one" 
+                 ng-model="signUpObject.password"
+                 required>
+        </label>
+      </div>
+    </form>
+<!--sign in form-->
+        <form novalidate name="signInForm" ng-show="!showSignUp">
+      <div class="list">
+        <label class="item item-input item-stacked-label">
+          <span class="input-label">Email</span>
+          <input type="email"
+                 name="email" 
+                 placeholder="Your email" 
+                 ng-model="signInObject.email"
+                 required>
+        </label>
+
+        <label class="item item-input item-stacked-label">
+          <span class="input-label">Password</span>
+          <input type="password"
+                 name="password" 
+                 placeholder="Your password" 
+                 ng-model="signInObject.password"
+                 required>
+        </label>
+      </div>
+    </form>
+    <div class="submitContainer">
+      <button class="button button-royal"
+              ng-click="signUp()" 
+              ng-disabled="!signUpForm.$valid"
+              ng-show="showSignUp">Sign up</button>
+
+      <button class="button button-positive" 
+              ng-click="signIn()" 
+              ng-disabled="!signInForm.$valid" 
+              ng-show="!showSignUp">Sign In</button>
+
+      <p id="forgotPassword" ng-click="showSignUp=!showSignUp;foo(showSignUp)" ng-show="showSignUp">Already a user?</p>
+      <p id="forgotPassword" ng-click="showSignUp=!showSignUp;foo(showSignUp)" ng-show="!showSignUp">Dont have an account? Sign up now</p>
+    </div>
+    <div class="errorContainer submitContainer error" style="padding: 20px;" ng-show="showSignInError">
+        <span id="errorMessage">{{errorMessage}}</span>
+    </div>
+  </ion-content>
+</ion-view>

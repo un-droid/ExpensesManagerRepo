@@ -1,0 +1,44 @@
+<ion-view view-title="Add or remove custom categories">
+  <ion-content>
+
+    <form novalidate name="customCategoriesForm">
+      <ion-list>
+        <ion-item>
+          <div class="item item-input item-stacked-label noBorder">
+          <span class="input-label">Create a new category</span>
+          <div class="catRow">
+            <input type="text"
+                  id="newCategoryInput"
+                  name="addNewCategory"
+                  placeholder="Category name" 
+                  ng-model="addNewCategory.value"
+                  ng-minlength="3"
+                  required
+                  class="settingsField">
+                <button ng-click="addCategory(addNewCategory.value)"
+                        ng-disabled="!customCategoriesForm.addNewCategory.$valid" 
+                        class="button button-small button-outline button-positive catButton">Add</button>
+          </div>
+        </div>
+        </ion-item>
+        <ion-item>
+          <div class="item item-input item-stacked-label noBorder">
+          <div class="input-label">Select existing category to remove</div>
+          <div class="displayBlock">
+            <select name="existingExpensesCategory"
+                    ng-model="removeExistingCategory"
+                    required
+                    id="existingExpensesSelect"
+                    class="noBorder settingsField">
+              <option ng-repeat="cat in ExistingCategoriesArray">{{cat}}</option>        
+            </select>
+            <button ng-click="removeCategory(removeExistingCategory)"
+                    ng-disabled="disableRemoveButton" 
+                    class="button button-small button-outline button-assertive catButton">Remove</button>
+          </div>
+          </div>
+        </ion-item>
+      </ion-list>
+    </form>
+  </ion-content>
+</ion-view>

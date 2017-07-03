@@ -1,0 +1,36 @@
+<ion-side-menus enable-menu-with-back-views="false">
+
+  <ion-side-menu-content>
+    <ion-nav-bar class="bar-positive">
+      <ion-nav-back-button>
+      </ion-nav-back-button>
+
+      <ion-nav-buttons side="left">
+        <button class="button button-icon button-clear ion-navicon" menu-toggle="left">
+              </button>
+      </ion-nav-buttons>
+    </ion-nav-bar>
+
+    <ion-nav-view name="menuContent"></ion-nav-view>
+  </ion-side-menu-content>
+
+  <ion-side-menu side="left">
+    <ion-header-bar class="bar-assertive">
+      <h1 class="title">{{menuTitle}}</h1>
+    </ion-header-bar>
+    <ion-content>
+      <ul class="list">
+        <!-- Note each link has the 'menu-close' attribute so the menu auto closes when clicking on one of these links -->
+        <a href="#/event/auth" class="item" menu-close>Sign In \ Up</a>
+        <a href="#/event/expense" class="item" menu-close>Expenses</a>
+        <a href="#/event/graph" class="item" menu-close>Graphs</a>
+        <a href="#/event/settings" class="item" menu-close>Settings</a>
+        <button class="button button-block" 
+        ng-show="showLogOut"
+        ng-click="signOut()"
+        >Sign out</button>       
+      </ul>
+    </ion-content>
+  </ion-side-menu>
+
+</ion-side-menus>
